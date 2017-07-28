@@ -6,14 +6,12 @@
     <link asp-href-include="lib/bootstrap/dist/css/*.min.css" rel="stylesheet" />
 </head>
 <body class="panel-body">
-<div class="bg-primary panel-body">
-    <div class="row">
-        <div class="col-xs-7"><h1>Products</h1></div>
-        <div class="col-xs-5">
-            <div class="bg-info text-primary panel-body">City Placeholder</div>
+    <div class="bg-primary panel-body">
+        <div class="row">
+            <div class="col-xs-7"><h1>Products</h1></div>
+            <div class="col-xs-5">@await Component.InvokeAsync("Poco")</div>
         </div>
     </div>
-</div>
-<div class="panel-body">@RenderBody()</div>
+    <div class="panel-body">@RenderBody()</div>
 </body>
 </html>
