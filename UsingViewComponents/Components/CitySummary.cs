@@ -10,14 +10,19 @@ namespace UsingViewComponents.Components
     public class CitySummary : ViewComponent
     {
         private ICityRepository repository;
+
         public CitySummary(ICityRepository repo)
         {
             repository = repo;
         }
-        public string Invoke()
+
+        public IViewComponentResult Invoke()
         {
-            return $"{repository.Cities.Count()} cities, "
-                   + $"{repository.Cities.Sum(c => c.Population)} people";
+            return View(new CityViewModel
+            {
+                Cities = repository.Cities.Count(),
+                Population = repository.Cities.Sum(c => c.Population)
+            });
         }
     }
 }
