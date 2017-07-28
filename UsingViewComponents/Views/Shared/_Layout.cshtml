@@ -10,7 +10,7 @@
     <div class="bg-primary panel-body">
         <div class="row">
             <div class="col-xs-7"><h1>Products</h1></div>
-            <div class="col-xs-5">@await Component.InvokeAsync(nameof(CitySummary))</div>
+            <div class="col-xs-5">@await Component.InvokeAsync(nameof(CitySummary),new{showList=true})</div>
         </div>
     </div>
     <div class="panel-body">@RenderBody()</div>

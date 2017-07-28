@@ -18,16 +18,14 @@ namespace UsingViewComponents.Components
             repository = repo;
         }
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(bool showList)
         {
-            string target = RouteData.Values["id"] as string;
-            var cities = repository.Cities
-                .Where(city => target == null ||
-                               string.Compare(city.Country, target, true) == 0);
+            if (showList)
+                return View("CityList", repository.Cities);
             return View(new CityViewModel
             {
-                Cities = cities.Count(),
-                Population = cities.Sum(c => c.Population)
+                Cities = repository.Cities.Count(),
+                Population = repository.Cities.Sum(c => c.Population)
             });
         }
     }
